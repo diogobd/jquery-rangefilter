@@ -1,0 +1,39 @@
+{
+    "name": "jquery-rangefilter",
+    "version": "1.0.0",
+    "homepage": "https://github.com/diogobd/jquery-rangefilter",
+    "authors": [
+        "Diogo Biolo D'Agostini (diogobd@gmail.com)"
+    ],
+    "description": "jQuery Range Filter",
+    "keywords": [
+        "filter",
+        "bi",
+        "business intelligence",
+        "jquery",
+        "date",
+        "datetime",
+        "period"
+    ],
+    "license": "MIT",
+    "main": [
+        "src/range-filter.js",
+        "src/css/range-filter.css"
+    ],
+    "ignore": [
+        "**/.*",
+        "bower_components",
+        "node_modules",
+        "test",
+        "tests"
+    ],
+    "dependencies" : {
+        "jquery": ">= 1.9.0",
+        "bootstrap": "^3.1.0",
+        "microevent-mistic100": "^2.0.0",
+        "jquery-extendext": "^0.1.1"
+    },
+    "devDependencies": {
+        "qunit": "~1.15.0"
+    }
+}

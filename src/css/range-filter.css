@@ -1,0 +1,21 @@
+/*!
+ * jQuery RangeFilter
+ * Copyright 2014-2015 Diogo D'Agostini
+ * Licensed under MIT (http://opensource.org/licenses/MIT)
+ */
+ 
+ .range-filter .btn-year{
+	min-width: 26px;
+ }
+ 
+ .range-filter .btn-month{
+	min-width: 35px;
+ }
+
+ .range-filter .btn-day{
+	min-width: 26px;
+ }
+ 
+ .range-filter .btn-day-all{
+	min-width: 26px;
+ }
