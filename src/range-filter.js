@@ -43,9 +43,9 @@ var leftButtonDown = false;
 
         this.filters = this.settings.filters;
         this.icons = this.settings.icons;
-		this.year = new Array();
-		this.month = new Array();
-		this.day = new Array();
+        this.year = new Array();
+        this.month = new Array();
+        this.day = new Array();
 
         // CHECK FILTERS
         if (!this.filters || this.filters.length < 1) {
@@ -62,9 +62,9 @@ var leftButtonDown = false;
 		this.$el.addClass('row');
         this.$el.addClass('range-filter');
         // INIT
-		this.draw();
+        this.draw();
         this.bindEvents();
-		this.prepareValues();
+        this.prepareValues();
         this.trigger('afterInit');
     };
 
