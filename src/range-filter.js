@@ -59,7 +59,7 @@ var leftButtonDown = false;
             this.status.generatedId = true;
         }
         this.$el_id = this.$el.attr('id');
-		this.$el.addClass('row');
+        this.$el.addClass('row');
         this.$el.addClass('range-filter');
         // INIT
         this.draw();
@@ -89,10 +89,10 @@ var leftButtonDown = false;
     };
 	
     RangeFilter.prototype.draw = function() {
-        this.$el.empty();	
+        this.$el.empty();
         this.$el.append(this.getYearInput());
-		this.$el.append(this.getMonthInput());
-		this.$el.append(this.getDayInput());
+        this.$el.append(this.getMonthInput());
+        this.$el.append(this.getDayInput());
     };
 	
     // MAIN METHODS
@@ -101,23 +101,23 @@ var leftButtonDown = false;
      * Checks the configuration of each filter
      */
     RangeFilter.prototype.checkFilters = function() {
-		var definedFilters = [],
-            that = this;	
-		if (!that.filters.year){
-			$.error('Missing filter year configuration');
-		}
-		if (!that.filters.year.start){
-			$.error('Missing filter year start configuration');
-		}
-		if (!that.filters.year.finish){
-			$.error('Missing filter year finish configuration');
-		}
-		if (!that.filters.month){
-			$.error('Missing filter month configuration');
-		}
-		if (!that.filters.day){
-			$.error('Missing filter day configuration');
-		}
+        var definedFilters = [],
+            that = this;
+        if (!that.filters.year){
+            $.error('Missing filter year configuration');
+        }
+        if (!that.filters.year.start){
+            $.error('Missing filter year start configuration');
+        }
+        if (!that.filters.year.finish){
+            $.error('Missing filter year finish configuration');
+        }
+        if (!that.filters.month){
+            $.error('Missing filter month configuration');
+        }
+        if (!that.filters.day){
+            $.error('Missing filter day configuration');
+        }
         this.trigger('afterCheckFilters');
     };
 
@@ -125,29 +125,29 @@ var leftButtonDown = false;
      * Add all events listeners
      */
     RangeFilter.prototype.prepareValues = function() {
-		var that = this;
-		that.year.clear();
-		this.$el.find('.btn-year').each(function(item){
-			var $element = $(this);
-			if ($element.hasClass('btn-primary')){
-				that.year.push($element.data('value'));
-			}
-		});
-		that.month.clear();
-		this.$el.find('.btn-month').each(function(item){
-			var $element = $(this);
-			if ($element.hasClass('btn-primary')){
-				that.month.push($element.data('value'));
-			}
-		});
-		that.day.clear();
-		this.$el.find('.btn-day').each(function(item){
-			var $element = $(this);
-			if ($element.hasClass('btn-primary')){
-				that.day.push($element.data('value'));
-			}
-		});
-	},
+        var that = this;
+        that.year.clear();
+        this.$el.find('.btn-year').each(function(item){
+            var $element = $(this);
+            if ($element.hasClass('btn-primary')){
+                that.year.push($element.data('value'));
+            }
+        });
+        that.month.clear();
+        this.$el.find('.btn-month').each(function(item){
+            var $element = $(this);
+            if ($element.hasClass('btn-primary')){
+                that.month.push($element.data('value'));
+            }
+        });
+        that.day.clear();
+        this.$el.find('.btn-day').each(function(item){
+            var $element = $(this);
+            if ($element.hasClass('btn-primary')){
+                that.day.push($element.data('value'));
+            }
+        });
+    },
 	
     /**
      * Add all events listeners
@@ -155,63 +155,62 @@ var leftButtonDown = false;
     RangeFilter.prototype.bindEvents = function() {
         var that = this;
 		
-		leftButtonDown = false;
-		$(document).mousedown(function(e){
-			// Left mouse button was pressed, set flag
-			if(e.which === 1) leftButtonDown = true;
-		});
-		$(document).mouseup(function(e){
-			// Left mouse button was released, clear flag
-			if(e.which === 1) leftButtonDown = false;
-		});		
+        leftButtonDown = false;
+        $(document).mousedown(function(e){
+            // Left mouse button was pressed, set flag
+            if(e.which === 1) leftButtonDown = true;
+        });
+        $(document).mouseup(function(e){
+            // Left mouse button was released, clear flag
+            if(e.which === 1) leftButtonDown = false;
+        });
 		
         this.$el.on('mouseenter', '.btn-year, .btn-month, .btn-day', function() {
             var $this = $(this);
-			if (leftButtonDown){
-				if ($this.hasClass('btn-primary')){
-					$this.removeClass('btn-primary');
-					$this.addClass('btn-default');
-				} else {
-					$this.removeClass('btn-default');
-					$this.addClass('btn-primary');					
-				}
-			}	
-        });		
+            if (leftButtonDown){
+                if ($this.hasClass('btn-primary')){
+                    $this.removeClass('btn-primary');
+                    $this.addClass('btn-default');
+                } else {
+                    $this.removeClass('btn-default');
+                    $this.addClass('btn-primary');
+                }
+            }
+        });
 
         this.$el.on('mousedown', '.btn-year, .btn-month, .btn-day', function() {
             var $this = $(this);
-			if ($this.hasClass('btn-primary')){
-				$this.removeClass('btn-primary');
-				$this.addClass('btn-default');
-			} else {
-				$this.removeClass('btn-default');
-				$this.addClass('btn-primary');					
-			}
-        });		
+            if ($this.hasClass('btn-primary')){
+                $this.removeClass('btn-primary');
+                $this.addClass('btn-default');
+            } else {
+                $this.removeClass('btn-default');
+                $this.addClass('btn-primary');
+            }
+        });
 		
-		this.$el.on('mouseup', '.btn-year, .btn-month, .btn-day', function() {
+        this.$el.on('mouseup', '.btn-year, .btn-month, .btn-day', function() {
             var $this = $(this);
-			that.prepareValues();
-        });			
+            that.prepareValues();
+        });
 		
         this.$el.on('click', '.btn-day-all', function() {
             var $this = $(this);
 			
-			var $list = that.$el.find('.btn-day');
-			if ($this.hasClass('btn-primary')){
-				$list.removeClass('btn-primary');
-				$list.addClass('btn-default');
-				$this.removeClass('btn-primary');
-				$this.addClass('btn-default');
-			} else {
-				$list.removeClass('btn-default');
-				$list.addClass('btn-primary');					
-				$this.removeClass('btn-default');
-				$this.addClass('btn-primary');					
-			}
-			that.prepareValues();
-        });		
-		
+            var $list = that.$el.find('.btn-day');
+            if ($this.hasClass('btn-primary')){
+                $list.removeClass('btn-primary');
+                $list.addClass('btn-default');
+                $this.removeClass('btn-primary');
+                $this.addClass('btn-default');
+            } else {
+                $list.removeClass('btn-default');
+                $list.addClass('btn-primary');
+                $this.removeClass('btn-default');
+                $this.addClass('btn-primary');
+            }
+            that.prepareValues();
+        });
     };
 
     // TEMPLATES
@@ -221,148 +220,140 @@ var leftButtonDown = false;
      * @return {string}
      */
 	RangeFilter.prototype.getYearInput = function() {
-		var year = this.settings.filters.year;
-		var btnclass = 'btn-default';
-		var template = '<div class="col-md-3"><div class="row">';
-		var checkSelected = false;
-		if (year.visible){
-			if (year.selected == '*'){
-				var btnclass = 'btn-primary';
-			} else if ($.isArray(year.selected)){
-				checkSelected = true;
-			}
-			var j=0;
-			for(var i = year.start; i <= year.finish; i++){
-				if (j >= 5){
-					template += '</div>';
-					template += '<div class="row">';
-					j = 0;
-				}
+        var year = this.settings.filters.year;
+        var btnclass = 'btn-default';
+        var template = '<div class="col-md-3"><div class="row">';
+        var checkSelected = false;
+        if (year.visible){
+            if (year.selected == '*'){
+                btnclass = 'btn-primary';
+            } else if ($.isArray(year.selected)){
+                checkSelected = true;
+            }
+            var j=0;
+            for(var i = year.start; i <= year.finish; i++){
+                if (j >= 5){
+                    template += '</div>';
+                    template += '<div class="row">';
+                    j = 0;
+                }
 				
-				if (checkSelected){
-					if ($.inArray(i, year.selected) != -1){
-						btnclass = 'btn-primary';
-					}
-				}
+                if (checkSelected){
+                    if ($.inArray(i, year.selected) != -1){
+                        btnclass = 'btn-primary';
+                    }
+                }
 				
-				template += '<button class="btn ' + btnclass + ' btn-xs btn-year" data-value="'+i+'">' + i + '</button>';
+                template += '<button class="btn ' + btnclass + ' btn-xs btn-year" data-value="'+i+'">' + i + '</button>';
 				
-				if (checkSelected){
-					btnclass = 'btn-default';
-				}
-				
-				j++;
-			}
-		}
-		template += '</div></div>';
-		return template;
-	}
+                if (checkSelected){
+                    btnclass = 'btn-default';
+                }
+                j++;
+            }
+        }
+        template += '</div></div>';
+        return template;
+    }
 	
     /**
      * Returns months input
      * @return {string}
      */
 	RangeFilter.prototype.getMonthInput = function() {
-		var month = this.settings.filters.month;
-		var btnclass = 'btn-default';
-		var template = '<div class="col-md-3"><div class="row">';
-		var checkSelected = false;
-		if (month.visible){
-			if (month.selected == '*'){
-				var btnclass = 'btn-primary';
-			} else if ($.isArray(month.selected)){
-				checkSelected = true;
-			}					
+        var month = this.settings.filters.month;
+        var btnclass = 'btn-default';
+        var template = '<div class="col-md-3"><div class="row">';
+        var checkSelected = false;
+        if (month.visible){
+            if (month.selected == '*'){
+                btnclass = 'btn-primary';
+            } else if ($.isArray(month.selected)){
+                checkSelected = true;
+            }
 			
-			var months = new Array();
-			months[0] = "Jan";
-			months[1] = "Fev";
-			months[2] = "Mar";
-			months[3] = "Abr";
-			months[4] = "Mai";
-			months[5] = "Jun";
-			months[6] = "Jul";
-			months[7] = "Ago";
-			months[8] = "Set";
-			months[9] = "Out";
-			months[10] = "Nov";
-			months[11] = "Dez";		
+            var months = new Array();
+            months[0] = "Jan";
+            months[1] = "Fev";
+            months[2] = "Mar";
+            months[3] = "Abr";
+            months[4] = "Mai";
+            months[5] = "Jun";
+            months[6] = "Jul";
+            months[7] = "Ago";
+            months[8] = "Set";
+            months[9] = "Out";
+            months[10] = "Nov";
+            months[11] = "Dez";
 			
-			var j=0;
-			for(var i = 0; i <= 11; i++){
-				if (j >= 6){
-					template += '</div>';
-					template += '<div class="row">';
-					j = 0;
-				}			
+            var j=0;
+            for(var i = 0; i <= 11; i++){
+                if (j >= 6){
+                    template += '</div>';
+                    template += '<div class="row">';
+                    j = 0;
+                }
 
-				if (checkSelected){
-					if ($.inArray(i+1, month.selected) != -1){
-						btnclass = 'btn-primary';
-					}
-				}
+                if (checkSelected){
+                    if ($.inArray(i+1, month.selected) != -1){
+                        btnclass = 'btn-primary';
+                    }
+                }
 				
-				template += '<button class="btn '  + btnclass + ' btn-xs btn-month" data-value="'+(i+1)+'">' + months[i] + '</button>';
+                template += '<button class="btn '  + btnclass + ' btn-xs btn-month" data-value="'+(i+1)+'">' + months[i] + '</button>';
 				
-				if (checkSelected){
-					btnclass = 'btn-default';
-				}
-				j++;
-			}
-		}
-		template += '</div></div>';
-		return template;	
-	}
+                if (checkSelected){
+                    btnclass = 'btn-default';
+                }
+                j++;
+            }
+        }
+        template += '</div></div>';
+        return template;
+    }
 
     /**
      * Returns days input
      * @return {string}
      */
 	RangeFilter.prototype.getDayInput = function() {
-		var day = this.settings.filters.day;
-		var btnclass = 'btn-default';
-		var template = '<div class="col-md-5"><div class="row">';
-		var checkSelected = false;
-		if (day.visible){
-			if (day.selected == '*'){
-				var btnclass = 'btn-primary';
-			} else if ($.isArray(day.selected)){
-				checkSelected = true;
-			}					
+        var day = this.settings.filters.day;
+        var btnclass = 'btn-default';
+        var template = '<div class="col-md-5"><div class="row">';
+        var checkSelected = false;
+        if (day.visible){
+            if (day.selected == '*'){
+                btnclass = 'btn-primary';
+            } else if ($.isArray(day.selected)){
+                checkSelected = true;
+            }
 
-			var j=0;
-			for(var i = 1; i <= 31; i++){
-				if (j >= 16){
-					template += '</div>';
-					template += '<div class="row">';
-					j = 0;
-				}	
-				if (checkSelected){
-					if ($.inArray(i, day.selected) != -1){
-						btnclass = 'btn-primary';
-					}
-				}
+            var j=0;
+            for(var i = 1; i <= 31; i++){
+                if (j >= 16){
+                    template += '</div>';
+                    template += '<div class="row">';
+                    j = 0;
+                }
+                if (checkSelected){
+                    if ($.inArray(i, day.selected) != -1){
+                        btnclass = 'btn-primary';
+                    }
+                }
 				
-				template += '<button class="btn ' + btnclass + ' btn-xs btn-day" data-value="'+i+'">' + i + '</button>';
+                template += '<button class="btn ' + btnclass + ' btn-xs btn-day" data-value="'+i+'">' + i + '</button>';
 				
-				if (checkSelected){
-					btnclass = 'btn-default';
-				}
-				j++;
-			}
-			template += '<button class="btn ' + btnclass + ' btn-xs btn-day-all">T</button>';
-		}
-		template += '</div></div>';
-		return template;	
-	}
+                if (checkSelected){
+                    btnclass = 'btn-default';
+                }
+                j++;
+            }
+            template += '<button class="btn ' + btnclass + ' btn-xs btn-day-all">T</button>';
+        }
+        template += '</div></div>';
+        return template;
+    }
 	
-    /**
-     * Returns group HTML
-     * @param group_id {string}
-     * @param level {int}
-     * @return {string}
-     */
-
     // JQUERY PLUGIN DEFINITION
     // ===============================
     $.fn.rangeFilter = function(option) {
@@ -402,7 +393,6 @@ var leftButtonDown = false;
     $.fn.rangeFilter.constructor = RangeFilter;
     $.fn.rangeFilter.extend = RangeFilter.extend;
     $.fn.rangeFilter.define = RangeFilter.define;
-
 
     // UTILITIES
     // ===============================
