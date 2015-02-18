@@ -21,7 +21,7 @@ var leftButtonDown = false;
     // DEFAULT CONFIG
     // ===============================
     RangeFilter.DEFAULTS = {
-        filters: [],
+        filters: []
     };
 
     /**
