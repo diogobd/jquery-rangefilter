@@ -47,7 +47,8 @@ $('#builder').rangeFilter({
 });
 
 $('#btn').on('click', function() {
-	$('#builder').rangeFilter('showData');
+    console.log($('#builder').rangeFilter('getFilter'));
+	alert($('#builder').rangeFilter('getFilter'));
 });
 </script>
 
