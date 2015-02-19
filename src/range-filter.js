@@ -84,8 +84,12 @@ var leftButtonDown = false;
             .removeData('rangeFilter');
     };
 	
-    RangeFilter.prototype.showData = function() {
-        alert(this.year + this.month + this.day);
+    RangeFilter.prototype.getFilter = function() {
+        return {
+            year: this.year,
+            month: this.month,
+            day: this.day
+        };
     };
 	
     RangeFilter.prototype.draw = function() {
@@ -222,7 +226,7 @@ var leftButtonDown = false;
 	RangeFilter.prototype.getYearInput = function() {
         var year = this.settings.filters.year;
         var btnclass = 'btn-default';
-        var template = '<div class="col-md-3"><div class="row">';
+        var template = '<div class="col-md-3 col-year"><div class="row">';
         var checkSelected = false;
         if (year.visible){
             if (year.selected == '*'){
@@ -263,7 +267,7 @@ var leftButtonDown = false;
 	RangeFilter.prototype.getMonthInput = function() {
         var month = this.settings.filters.month;
         var btnclass = 'btn-default';
-        var template = '<div class="col-md-3"><div class="row">';
+        var template = '<div class="col-md-3 col-month"><div class="row">';
         var checkSelected = false;
         if (month.visible){
             if (month.selected == '*'){
@@ -319,7 +323,7 @@ var leftButtonDown = false;
 	RangeFilter.prototype.getDayInput = function() {
         var day = this.settings.filters.day;
         var btnclass = 'btn-default';
-        var template = '<div class="col-md-5"><div class="row">';
+        var template = '<div class="col-md-5 col-day"><div class="row">';
         var checkSelected = false;
         if (day.visible){
             if (day.selected == '*'){
