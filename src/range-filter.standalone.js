@@ -420,6 +420,9 @@ var leftButtonDown = false;
         this.year = new Array();
         this.month = new Array();
         this.day = new Array();
+        this.status = {
+            generatedId: false
+        }
 
         // CHECK FILTERS
         if (!this.filters || this.filters.length < 1) {
