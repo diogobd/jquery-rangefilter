@@ -16,8 +16,6 @@ var leftButtonDown = false;
         this.init(options);
     };
 
-    MicroEvent.mixin(RangeFilter);
-	
     // DEFAULT CONFIG
     // ===============================
     RangeFilter.DEFAULTS = {
