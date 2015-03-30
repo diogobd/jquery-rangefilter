@@ -68,15 +68,12 @@ var leftButtonDown = false;
         this.draw();
         this.bindEvents();
         this.prepareValues();
-        this.trigger('afterInit');
     };
 
     /**
      * Destroy the plugin
      */
     RangeFilter.prototype.destroy = function() {
-        this.trigger('beforeDestroy');
-
         if (this.status.generatedId) {
             this.$el.removeAttr('id');
         }
@@ -125,7 +122,6 @@ var leftButtonDown = false;
         if (!that.filters.day){
             $.error('Missing filter day configuration');
         }
-        this.trigger('afterCheckFilters');
     };
 
     /**
@@ -154,6 +150,7 @@ var leftButtonDown = false;
                 that.day.push($element.data('value'));
             }
         });
+        this.$el.trigger('rangefilter.change', this.getFilter());
     },
 	
     /**
