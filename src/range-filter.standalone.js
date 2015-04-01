@@ -372,7 +372,7 @@ var leftButtonDown = false;
                     }
                 }
 				
-                template += '<button class="btn ' + btnclass + ' btn-xs btn-year" data-value="'+i+'">' + i + '</button>';
+                template += '<a class="btn ' + btnclass + ' btn-xs btn-year" data-value="'+i+'">' + i + '</a>';
 				
                 if (checkSelected){
                     btnclass = 'btn-default';
@@ -428,7 +428,7 @@ var leftButtonDown = false;
                     }
                 }
 				
-                template += '<button class="btn '  + btnclass + ' btn-xs btn-month" data-value="'+(i+1)+'">' + months[i] + '</button>';
+                template += '<a class="btn '  + btnclass + ' btn-xs btn-month" data-value="'+(i+1)+'">' + months[i] + '</a>';
 				
                 if (checkSelected){
                     btnclass = 'btn-default';
@@ -469,14 +469,14 @@ var leftButtonDown = false;
                     }
                 }
 				
-                template += '<button class="btn ' + btnclass + ' btn-xs btn-day" data-value="'+i+'">' + i + '</button>';
+                template += '<a class="btn ' + btnclass + ' btn-xs btn-day" data-value="'+i+'">' + i + '</a>';
 				
                 if (checkSelected){
                     btnclass = 'btn-default';
                 }
                 j++;
             }
-            template += '<button class="btn ' + btnclass + ' btn-xs btn-day-all">T</button>';
+            template += '<a class="btn ' + btnclass + ' btn-xs btn-day-all">T</a>';
         }
         template += '</div></div>';
         return template;
