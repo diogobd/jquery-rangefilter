@@ -60,7 +60,7 @@ var leftButtonDown = false;
             this.status.generatedId = true;
         }
         this.$el_id = this.$el.attr('id');
-        this.$el.addClass('row');
+        //this.$el.addClass('row');
         this.$el.addClass('range-filter');
         // INIT
         this.draw();

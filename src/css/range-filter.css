@@ -24,13 +24,17 @@
 }
 
 .range-filter .col-year{
-    width: 185px;
+    width: auto;
 }
 
 .range-filter .col-month{
-    width: 215px;
+    /*width: 215px;*/
+    width: auto;
+    padding-left: 25px;
 }
 
 .range-filter .col-day{
-    width: 416px;
+    /*width: 416px;*/
+    width: auto;
+    padding-left: 25px;
 }
